@@ -4,8 +4,9 @@ import { GoPrimitiveDot } from 'react-icons/go'
 import { Stacked, Pie, Button, SparkLine } from '../components'
 import { earningData, SparklineAreaData, ecomPieChartData } from '../data/dummy'
 import { useStateContext } from '../contexts/ContextProvider'
+import { motion } from "framer-motion"
 const Ecommerce = () => {
-  const { currentColor} = useStateContext();
+  const { currentColor, currentMode} = useStateContext();
   return (
     <div className="mt-12">
       <div className="flex flex-wrap lg:flex-nowrap justify-center ">
@@ -17,7 +18,7 @@ const Ecommerce = () => {
             </div>
           </div>
           <div className='mt-6'>
-            <Button color="white" bgColor="blue" text="Download" borderRadius="10px" size="md" />
+            <Button color="white" bgColor={currentColor} text="Download" borderRadius="10px" size="md" />
           </div>
         </div>
         <div className='flex m-3 flex-wrap justify-center gap-1 items-center'>
@@ -75,7 +76,7 @@ const Ecommerce = () => {
                 <SparkLine currentColor={currentColor} id="line-sparkLine" type="Line" height="80px" width="250px" data={SparklineAreaData} color={currentColor} />
               </div>
               <div className='mt-10'>
-                <Button color="white" bgColor="blue" text="Download Report" borderRadius="10px"/>
+                <Button color="white" bgColor={currentColor} text="Download Report" borderRadius="10px"/>
               </div>
             </div>
             <div>
