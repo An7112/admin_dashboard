@@ -36,7 +36,7 @@ const Employees = () => {
     setCurrentSort(nextSort)
   }
   return (
-    <div className={`m-2 mt-16 md:m-10 p-2 md:p-10 rounded-3xl mt-14${currentMode === 'Dark' ? 'bg-gray-700' : 'bg-white'}`}>
+    <div className={`m-2 mt-16 md:m-10 p-2 md:p-10 rounded-3xl ${currentMode === 'Dark' ? 'bg-gray-700' : 'bg-white'}`}>
       <Header category="Page" title="Employees" />
       <button type='button' onClick={onSortChange} className=' w-10 h-10 bg-gray-200 rounded-lg mb-4 shadow-2xl flex items-center justify-center'>
         <p>{sortTypes[currentSort].class}</p>

@@ -21,7 +21,7 @@ const Orders = () => {
             {ordersGrid.map((item) => (
               <thead className='border-separate align-middle text-xs flex items-center justify-center border-b-1'>
                 <tr className='box-border'>
-                  <th className='border-l-0 relative border-solid text-xs h-10 overflow-hidden text-center xs:text-xs text-slate-400'>{item.headerText}</th>
+                  <th className='border-l-0 border-solid text-xs h-10 overflow-hidden text-center text-slate-400'>{item.headerText}</th>
                 </tr>
               </thead>
             ))}
@@ -32,49 +32,49 @@ const Orders = () => {
             <table className='border-separate box-border table-fixed w-full indent-0 border-inherit grid grid-cols-7'>
               <thead className='border-separate align-middle text-xs flex items-center justify-center border-b-1'>
                 <tr className='box-border'>
-                  <th className='border-l-0 relative text-xs h-auto overflow-hidden text-center xs:text-xs'>
+                  <th className='border-l-0 text-xs h-auto overflow-hidden text-center'>
                     <img src={item.ProductImage} alt="ProductImage" className='rounded-3xl object-cover w-32 h-32' />
                   </th>
                 </tr>
               </thead>
               <thead className='border-separate align-middle text-xs flex items-center justify-center border-b-1'>
                 <tr className='box-border'>
-                  <th className='border-l-0 relative text-xs h-10 overflow-hidden text-center xs:text-xs'>
+                  <th className='border-l-0 text-xs h-10 overflow-hidden text-center'>
                     <p className='text-slate-400'>{item.OrderItems}</p>
                   </th>
                 </tr>
               </thead>
               <thead className='border-separate align-middle text-xs flex items-center justify-center border-b-1'>
                 <tr className='box-border'>
-                  <th className='border-l-0 relative text-xs h-10 overflow-hidden text-center xs:text-xs'>
+                  <th className='border-l-0 text-xs h-10 overflow-hidden text-center'>
                     <p className='text-slate-400'>{item.CustomerName}</p>
                   </th>
                 </tr>
               </thead>
               <thead className='border-separate align-middle text-xs flex items-center justify-center border-b-1'>
                 <tr className='box-border'>
-                  <th className='border-l-0 relative text-xs h-10 overflow-hidden text-center xs:text-xs'>
+                  <th className='border-l-0 text-xs h-10 overflow-hidden text-center'>
                     <p className='text-slate-400'>{item.TotalAmount}</p>
                   </th>
                 </tr>
               </thead>
               <thead className='border-separate align-middle text-xs flex items-center justify-center border-b-1'>
                 <tr className='box-border'>
-                  <th className='border-l-0 relative border-solid text-xs h-10 overflow-hidden text-center xs:text-xs rounded-xl' style={{ backgroundColor: `${item.StatusBg}` }}>
+                  <th className='border-l-0 border-solid text-xs h-10 overflow-hidden text-center rounded-xl' style={{ backgroundColor: `${item.StatusBg}` }}>
                     <p className='text-white px-4'>{item.Status}</p>
                   </th>
                 </tr>
               </thead>
               <thead className='border-separate align-middle text-xs flex items-center justify-center border-b-1'>
                 <tr className='box-border'>
-                  <th className='border-l-0 relative border-solid text-xs h-10 overflow-hidden text-center xs:text-xs'>
+                  <th className='border-l-0 border-solid text-xs h-10 overflow-hidden text-center'>
                     <p className='text-slate-400'>{item.OrderID}</p>
                   </th>
                 </tr>
               </thead>
               <thead className='border-separate align-middle text-xs flex items-center justify-center border-b-1'>
                 <tr className='box-border'>
-                  <th className='border-l-0 relative border-solid text-xs h-10 overflow-hidden text-center xs:text-xs'>
+                  <th className='border-l-0 border-solid text-xs h-10 overflow-hidden text-center'>
                     <p className='text-slate-400'>{item.Location}</p>
                   </th>
                 </tr>
@@ -83,6 +83,7 @@ const Orders = () => {
           </div>
         ))}
         <Pagination datasPerPage={datasPerPage} currentPage={currentPage} totalDatas={ordersData.length} paginate={paginate} />
+      
       </div>
 
     </div>

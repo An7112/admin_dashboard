@@ -5,13 +5,13 @@ import { BsChatLeft } from 'react-icons/bs';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import avatar from '../data/avatar.jpg';
-import { Cart, Chat, Notification, UserProfile } from '.';
+import { Cart, Chat, Notification, UserProfile } from '.'
 import {useSelector, useDispatch} from 'react-redux'
 import { actionType } from '../store/reducer';
-
+import { motion } from 'framer-motion';
 const NavButton = memo(({ title, customFunc, icon, color, dotColor }) => (
-
-    <button
+    <motion.button
+      whileHover={{scale:1.1}}
       type="button"
       onClick={() => customFunc()}
       style={{ color }}
@@ -22,7 +22,7 @@ const NavButton = memo(({ title, customFunc, icon, color, dotColor }) => (
         className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
       />
       {icon}
-    </button>
+    </motion.button>
 ));
 
 const Navbar = () => {
@@ -62,7 +62,6 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
-
       <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
       <div className="flex">
         <NavButton title="Cart" color={currentColor} icon={<FiShoppingCart />} />
