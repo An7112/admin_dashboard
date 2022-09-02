@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { ordersData, contextMenuItems, ordersGrid } from '../data/dummy'
 import { Header } from '../components'
-import { useStateContext } from '../contexts/ContextProvider'
 import Pagination from './Pagination'
 import { FaSortDown, FaSortUp, FaSort } from 'react-icons/fa'
+import {useSelector, useDispatch} from 'react-redux'
 const Employees = () => {
-  const { currentMode } = useStateContext()
+  const dispatch = useDispatch();
+  const {currentMode } = useSelector(state => state.stateReducer)
   const [currentPage, setCurrentPage] = useState(1)
   const [datasPerPage, setDatasPerPage] = useState(5)
   const indexOfLastData = currentPage * datasPerPage
@@ -40,7 +41,7 @@ const Employees = () => {
       <button type='button' onClick={onSortChange} className=' w-10 h-10 bg-gray-200 rounded-lg mb-4 shadow-2xl flex items-center justify-center'>
         <p>{sortTypes[currentSort].class}</p>
       </button>
-      <div className=' mx-auto bg-white rounded-xl shadow-2xl overflow-x-scroll'>
+      <div className={` mx-auto ${currentMode === 'Dark' ? 'bg-gray-700' : 'bg-white'} rounded-xl shadow-2xl overflow-x-scroll`}>
         <div className='w-1400 xl:w-full'>
           <table className='border-separate table-fixed w-full indent-0 border-inherit grid grid-cols-7'>
             {ordersGrid.map((item) => (

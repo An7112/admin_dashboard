@@ -2,21 +2,25 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { SiShopware } from 'react-icons/si';
 import { MdOutlineCancel } from 'react-icons/md';
-import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { links } from '../data/dummy';
-import { useStateContext } from '../contexts/ContextProvider';
-
+import { actionType } from '../store/reducer';
 const Sidebar = () => {
-  const { currentColor, activeMenu, setActiveMenu, screenSize } = useStateContext();
-
+  const dispatch = useDispatch();
+  const {currentColor, screenSize, activeMenu} = useSelector(state => state.stateReducer)
   const handleCloseSideBar = () => {
     if (activeMenu !== undefined && screenSize <= 900) {
-      setActiveMenu(false);
+      dispatch({
+        type: actionType.SET_ACTIVE_MENU,
+        activeMenu: false,
+    });
     }
   };
   const handleSetActive = () => {
-    setActiveMenu(!activeMenu)
+    dispatch({
+      type: actionType.SET_ACTIVE_MENU,
+      activeMenu: !activeMenu,
+  });
   }
   const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2';
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
@@ -29,7 +33,6 @@ const Sidebar = () => {
             <Link to="/" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
               <SiShopware /> <span>Shoppy</span>
             </Link>
-            <TooltipComponent content="Menu" position="BottomCenter">
               <button
                 type="button"
                 onClick={handleSetActive}
@@ -38,7 +41,6 @@ const Sidebar = () => {
               >
                 <MdOutlineCancel />
               </button>
-            </TooltipComponent>
           </div>
           <div className="mt-10 ">
             {links.map((item) => (

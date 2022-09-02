@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { ordersData, contextMenuItems, ordersGrid } from '../data/dummy'
 import { Header } from '../components'
-import { useStateContext } from '../contexts/ContextProvider'
 import Pagination from './Pagination'
+import {useSelector, useDispatch} from 'react-redux'
 const Orders = () => {
-  const { currentMode } = useStateContext()
+  const dispatch = useDispatch();
+  const {currentMode } = useSelector(state => state.stateReducer)
   const [currentPage, setCurrentPage] = useState(1)
   const [datasPerPage, setDatasPerPage] = useState(5)
   const indexOfLastData = currentPage * datasPerPage
@@ -12,9 +13,9 @@ const Orders = () => {
   const currentDatas = ordersData.slice(indexOfFirstData, indexOfLastData)
   const paginate = pageNumber => setCurrentPage(pageNumber)
   return (
-    <div className={`m-2 mt-16 md:m-10 p-2 md:p-10 rounded-3xl mt-14${currentMode === 'Dark' ? 'bg-gray-700' : 'bg-white'}`}>
+    <div className={`m-2 mt-16 md:m-10 p-2 md:p-10 rounded-3xl ${currentMode === 'Dark' ? 'bg-gray-700' : 'bg-white'}`}>
       <Header category="Page" title="Orders" />
-      <div className=' mx-auto bg-white rounded-xl shadow-2xl overflow-x-scroll'>
+      <div className={` mx-auto ${currentMode === 'Dark' ? 'bg-gray-700' : 'bg-white'} rounded-xl shadow-2xl overflow-x-scroll`}>
         <div className='w-1400 xl:w-full'>
           <table className='border-separate table-fixed w-full indent-0 border-inherit grid grid-cols-7'>
             {ordersGrid.map((item) => (

@@ -1,8 +1,8 @@
 import React,{memo} from 'react'
-import { useStateContext } from '../contexts/ContextProvider'
-
+import {useDispatch, useSelector} from 'react-redux'
 const Header = memo(({category, title}) => {
-  const {currentMode} = useStateContext()
+  const dispatch = useDispatch();
+  const {currentMode } = useSelector(state => state.stateReducer)
   return (
     <div className='mb-10'>
       <p className={currentMode === 'Dark' ? 'text-gray-200' : 'text-gray-400'}>

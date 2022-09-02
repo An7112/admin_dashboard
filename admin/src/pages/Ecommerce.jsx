@@ -3,10 +3,11 @@ import { BsCurrencyDollar } from 'react-icons/bs'
 import { GoPrimitiveDot } from 'react-icons/go'
 import { Stacked, Pie, Button, SparkLine } from '../components'
 import { earningData, SparklineAreaData, ecomPieChartData } from '../data/dummy'
-import { useStateContext } from '../contexts/ContextProvider'
 import { motion } from "framer-motion"
+import {useDispatch, useSelector} from 'react-redux'
 const Ecommerce = () => {
-  const { currentColor, currentMode} = useStateContext();
+  const dispatch = useDispatch();
+  const {currentColor, currentMode } = useSelector(state => state.stateReducer)
   return (
     <div className="mt-12">
       <div className="flex flex-wrap lg:flex-nowrap justify-center ">
