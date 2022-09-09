@@ -74,14 +74,14 @@ const Ecommerce = () => {
                 <p className='text-gray-500 mt-1'>Expense</p>
               </div>
               <div className='mt-5'>
-                <SparkLine currentColor={currentColor} id="line-sparkLine" type="Line" height="80px" width="250px" data={SparklineAreaData} color={currentColor} />
+                {/* <SparkLine currentColor={currentColor} id="line-sparkLine" type="Line" data={SparklineAreaData} color={currentColor} /> */}
               </div>
               <div className='mt-10'>
                 <Button color="white" bgColor={currentColor} text="Download Report" borderRadius="10px"/>
               </div>
             </div>
-            <div>
-              <Stacked width="320px" height="320px"/>
+            <div className='flex items-center justify-center h-96 z-0'>
+              <Stacked/>
             </div>
           </div>
         </div>

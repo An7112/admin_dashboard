@@ -1,4 +1,4 @@
-import React, {memo, useEffect } from 'react';
+import React, {memo, useEffect, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BsChatLeft } from 'react-icons/bs';
@@ -27,7 +27,7 @@ const NavButton = memo(({ title, customFunc, icon, color, dotColor }) => (
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const {currentColor, screenSize, activeMenu} = useSelector(state => state.stateReducer)
+  const {currentColor, screenSize, activeMenu, activeCart} = useSelector(state => state.stateReducer)
   useEffect(() => {
     const handleResize = () => dispatch({
       type: actionType.SET_SCREEN_SIZE,
@@ -59,15 +59,20 @@ const Navbar = () => {
     type: actionType.SET_ACTIVE_MENU,
     activeMenu: !activeMenu
   });
+  const changeActiveCart = () => {
+    dispatch({
+      type: actionType.SET_ACTIVE_CART,
+      activeCart: !activeCart
+    })
+  }
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
       <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
       <div className="flex">
-        <NavButton title="Cart" color={currentColor} icon={<FiShoppingCart />} />
+        <NavButton title="Cart" color={currentColor} icon={<FiShoppingCart />} customFunc={() => changeActiveCart()}/>
         <NavButton title="Chat" dotColor="#03C9D7" color={currentColor} icon={<BsChatLeft />} />
         <NavButton title="Notification" dotColor="rgb(254, 201, 15)" color={currentColor} icon={<RiNotification3Line />} />
-        {/* <TooltipComponent content="Profile" position="BottomCenter"> */}
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
           
@@ -85,7 +90,6 @@ const Navbar = () => {
             </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
-        {/* </TooltipComponent> */}
 
         {/* {isClicked.cart && (<Cart />)}
         {isClicked.chat && (<Chat />)}

@@ -2,7 +2,9 @@ import React from 'react'
 
 const SparkLine = () => {
   return (
-    <div>SparkLine</div>
+    <div className='w-64 h-20 bg-white'>
+
+    </div>
   )
 }
 

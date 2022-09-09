@@ -3,7 +3,6 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
-  
     fontFamily: {
       display: ['Open Sans', 'sans-serif'],
       body: ['Open Sans', 'sans-serif'],
@@ -12,6 +11,7 @@ module.exports = {
       fontSize: {
         14: '14px',
       },
+      
       backgroundColor: {
         'main-bg': '#FAFBFB',
         'main-dark-bg': '#20232A',
