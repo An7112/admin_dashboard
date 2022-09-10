@@ -6,7 +6,6 @@ import { earningData, SparklineAreaData, ecomPieChartData } from '../data/dummy'
 import { motion } from "framer-motion"
 import {useDispatch, useSelector} from 'react-redux'
 const Ecommerce = () => {
-  const dispatch = useDispatch();
   const {currentColor, currentMode } = useSelector(state => state.stateReducer)
   return (
     <div className="mt-12">

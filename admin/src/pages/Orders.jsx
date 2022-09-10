@@ -15,7 +15,7 @@ const Orders = () => {
   return (
     <div className={`m-2 mt-16 md:m-10 p-2 md:p-10 rounded-3xl ${currentMode === 'Dark' ? 'bg-gray-700' : 'bg-white'}`}>
       <Header category="Page" title="Orders" />
-      <div className={` mx-auto ${currentMode === 'Dark' ? 'bg-gray-700' : 'bg-white'} rounded-xl shadow-2xl overflow-x-scroll`}>
+      <div className={` mx-auto ${currentMode === 'Dark' ? 'bg-gray-700' : 'bg-white'} rounded-xl shadow-2xl overflow-x-scroll relative`}>
         <div className='w-1400 xl:w-full'>
           <table className='border-separate table-fixed w-full indent-0 border-inherit grid grid-cols-7'>
             {ordersGrid.map((item) => (

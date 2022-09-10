@@ -29,7 +29,7 @@ const Pagination = ({ datasPerPage, currentPage, totalDatas, paginate }) => {
 
     }, [scrollPage])
     return (
-        <div className='flex w-80 flex-row ml-auto items-center justify-center'>
+        <div className='flex w-[310px] flex-row ml-auto items-center justify-center fixed bottom-4 bg-bg-gray-transparent rounded-lg'>
             <motion.div whileTap={{ scale: 0.75 }} className={`${currentMode === 'Dark' ? 'text-white' : 'text-gray-600'} w-8 h-8 bg-bg-gray-transparent float-left rounded-md flex items-center justify-center cursor-pointer border-1 border-slate-300 ${lenghtPage - count < 5 && 'hidden'}`} onClick={increaseScroll}>
                 <MdNavigateNext />
             </motion.div>

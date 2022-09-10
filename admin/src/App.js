@@ -7,6 +7,7 @@ import Login from './pages/Chat/Login'
 import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages'
 import { actionType } from './store/reducer'
 import { motion } from 'framer-motion'
+import ChatHome from './pages/Chat/ChatHome'
 const App = () => {
 
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={(<Ecommerce />)} />
                 <Route path="/ecommerce" element={(<Ecommerce />)} />
-                <Route path="/chat" element={(<Login/>)} />
+                <Route path="/chat" element={(<ChatHome/>)} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/employees" element={<Employees />} />
                 <Route path="/calendar" element={<Calendar />} />
