@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route,Navigate } from 'react-router-dom'
 import { FiSettings } from 'react-icons/fi'
 import { Navbar, Footer, Sidebar, ThemeSettings, Cart } from './components'
 import Login from './pages/Chat/Login'
@@ -8,16 +8,24 @@ import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Ka
 import { actionType } from './store/reducer'
 import { motion } from 'framer-motion'
 import ChatHome from './pages/Chat/ChatHome'
+import Register from './pages/Chat/Register'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from './firebase'
 const App = () => {
-
   const dispatch = useDispatch();
-  const { currentColor, themeSettings, currentMode, activeMenu, activeCart } = useSelector(state => state.stateReducer)
+  const { currentColor, currentUser, themeSettings, currentMode, activeMenu, activeCart } = useSelector(state => state.stateReducer)
   const setThemeSettings = () => {
     dispatch({
       type: actionType.SET_THEME_SETTINGS,
       themeSettings: true
     })
   }
+  const ProtectedRoute = ({ children }) => {
+    if (currentUser.length === 0) {
+      return <Navigate to="/login" />;
+    }
+    return children
+  };
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
@@ -59,9 +67,11 @@ const App = () => {
             <div>
               {themeSettings && <ThemeSettings />}
               <Routes>
-                <Route path="/" element={(<Ecommerce />)} />
+                <Route path="/" element={(<Ecommerce />)}/>
                 <Route path="/ecommerce" element={(<Ecommerce />)} />
-                <Route path="/chat" element={(<ChatHome/>)} />
+                <Route path="/chat" element={(<ProtectedRoute><ChatHome/></ProtectedRoute>)} />
+                <Route path="/register" element={(<Register/>)} />
+                <Route path="/login" element={(<Login/>)} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/employees" element={<Employees />} />
                 <Route path="/calendar" element={<Calendar />} />

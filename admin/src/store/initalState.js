@@ -1,3 +1,5 @@
+
+
 export const initialState = {
     screenSize:undefined,
     themeSettings:false, 
@@ -7,5 +9,8 @@ export const initialState = {
     activeCart: false,
     search:"",
     activeSearch: true,
-    stackedChart:[]
+    stackedChart:[],
+    currentUser:[],
+    chatId: "null",
+    user: {},
 }

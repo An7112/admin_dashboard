@@ -1,3 +1,4 @@
+
 import { initialState } from "./initalState"
 export const actionType = {
     SET_SCREEN_SIZE: 'SET_SCREEN_SIZE',
@@ -8,7 +9,8 @@ export const actionType = {
     SET_ACTIVE_CART: 'SET_ACTIVE_CART',
     SET_SEARCH: 'SET_SEARCH',
     SET_ACTIVE_SEARCH: 'SET_ACTIVE_SEARCH',
-    SET_STACKED_CHART: 'SET_STACKED_CHART'
+    SET_STACKED_CHART: 'SET_STACKED_CHART',
+    SET_CURRENT_USER: 'SET_CURRENT_USER'
 }
 
 const reducer = (state = initialState, action) => {
@@ -58,6 +60,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 stackedChart: action.stackedChart
             }
+        case actionType.SET_CURRENT_USER:
+            return {
+                ...state,
+                currentUser: action.currentUser
+            }
+
         default:
             return state
     }
