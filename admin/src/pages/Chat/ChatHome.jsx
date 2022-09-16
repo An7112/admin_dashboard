@@ -7,7 +7,7 @@ const ChatHome = () => {
   const {currentUser} = useSelector(state => state.stateReducer)
   return (
     <div className='flex items-center justify-center mt-20'>
-      <div className='border-1 md:w-4/6 min-screen:w-11/12 h-[700px] border-slate-500 box-border rounded-lg flex overflow-hidden'>
+      <div className=' md:w-4/6 min-screen:w-11/12 h-[700px] box-border rounded-lg flex overflow-hidden'>
         <Sidebar />
         <Chat />
       </div>

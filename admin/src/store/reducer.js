@@ -4,6 +4,7 @@ export const actionType = {
     SET_SCREEN_SIZE: 'SET_SCREEN_SIZE',
     SET_THEME_SETTINGS: 'SET_THEME_SETTINGS',
     SET_ACTIVE_MENU: 'SET_ACTIVE_MENU',
+    SET_ACTIVE_CHATS: 'SET_ACTIVE_CHATS',
     SET_CURRENT_COLOR: 'SET_CURRENT_COLOR',
     SET_CURRENT_MODE: 'SET_CURRENT_MODE',
     SET_ACTIVE_CART: 'SET_ACTIVE_CART',
@@ -65,7 +66,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 currentUser: action.currentUser
             }
-
+        case actionType.SET_ACTIVE_CHATS:
+            return {
+                ...state,
+                chatsActive: action.chatsActive
+            }
         default:
             return state
     }

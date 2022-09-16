@@ -21,7 +21,7 @@ const App = () => {
     })
   }
   const ProtectedRoute = ({ children }) => {
-    if (currentUser.length === 0) {
+    if (currentUser?.length === 0) {
       return <Navigate to="/login" />;
     }
     return children
@@ -54,7 +54,7 @@ const App = () => {
           <div
             className={
               activeMenu
-                ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
+                ? 'dark:bg-main-dark-bg bg-main-bg min-h-screen md:ml-72 w-full  '
                 : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
             }
           >
@@ -67,15 +67,15 @@ const App = () => {
             <div>
               {themeSettings && <ThemeSettings />}
               <Routes>
-                <Route path="/" element={(<Ecommerce />)}/>
-                <Route path="/ecommerce" element={(<Ecommerce />)} />
+                <Route path="/" element={(<Ecommerce/>)}/>
+                <Route path="/ecommerce" element={(<Ecommerce/>)} />
                 <Route path="/chat" element={(<ProtectedRoute><ChatHome/></ProtectedRoute>)} />
                 <Route path="/register" element={(<Register/>)} />
                 <Route path="/login" element={(<Login/>)} />
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/employees" element={<Employees />} />
-                <Route path="/calendar" element={<Calendar />} />
-                <Route path="/customers" element={<Customers />} />
+                <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+                <Route path="/employees" element={<ProtectedRoute><Employees /></ProtectedRoute>} />
+                <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
+                <Route path="/customers" element={<ProtectedRoute><Customers /></ProtectedRoute>} />
                 <Route path="/kanban" element={<Kanban />} />
                 <Route path="/editor" element={<Editor />} />
                 <Route path="/color-picker" element={<ColorPicker />} />

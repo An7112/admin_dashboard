@@ -6,7 +6,9 @@ import { useState } from 'react'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import {doc, setDoc} from 'firebase/firestore'
 import { useNavigate,Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 const Register = () => {
+  const {currentColor} = useSelector(state => state.stateReducer)
   const [err, setErr] = useState(false)
   const navigate = useNavigate()
   const handleSubmit = async (e) => {
@@ -50,7 +52,7 @@ const Register = () => {
     <div className='mt-20 flex items-center justify-center'>
       <div className='flex items-center justify-center flex-col gap-2 rounded-lg'>
         <span className='text-[#5d5b8d] font-bold text-[24px]'>
-          Chat
+          Shoppy
         </span>
         <span className='text-[#5d5b8d] text-[12px]'>
           Register
@@ -64,7 +66,7 @@ const Register = () => {
             <img src={addAvatar} alt='' className='w-8' />
             <span>Add an avatar</span>
           </label>
-          <button className='bg-[#7b96ec] text-white p-2 font-bold border-0 cursor-pointer'>
+          <button className='bg-[#7b96ec] text-white p-2 font-bold border-0 cursor-pointer' style={{backgroundColor:currentColor}}>
             Sign up
           </button>
           {err && <span>Something went wrong</span>}

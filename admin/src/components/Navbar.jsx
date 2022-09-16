@@ -47,10 +47,19 @@ const Navbar = () => {
         type:actionType.SET_ACTIVE_MENU,
         activeMenu: false
       })
-    } else {
+    }else if(screenSize <= 1200){
+      dispatch({
+        type: actionType.SET_ACTIVE_CHATS,
+        chatsActive: false
+      })
+    }else {
       dispatch({
         type:actionType.SET_ACTIVE_MENU,
         activeMenu: true
+      })
+      dispatch({
+        type: actionType.SET_ACTIVE_CHATS,
+        chatsActive: true
       })
     }
   }, [screenSize]);

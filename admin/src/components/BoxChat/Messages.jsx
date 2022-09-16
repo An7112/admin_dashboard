@@ -16,7 +16,6 @@ const Messages = () => {
       ubSub()
     }
   },[chatId])
-  console.log(messages)
   return (
     <div className=' p-[10px] h-[calc(100%-160px)] overflow-y-scroll'>
       {messages.map((mes) => (

@@ -13,6 +13,7 @@ const Chats = () => {
     const getChats = () => {
       const ubsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
         setCharts(doc.data())
+        console.log(doc.data())
       })
       return () => {
         ubsub()

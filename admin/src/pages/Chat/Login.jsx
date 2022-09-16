@@ -5,10 +5,12 @@ import { useNavigate,Link } from 'react-router-dom';
 import { auth } from '../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { actionType } from '../../store/reducer';
 const Login = () => {
+  const {currentColor, currentUser} = useSelector(state => state.stateReducer)
   const [err, setErr] = useState(false);
+  const [user, setUser] = useState([])
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
@@ -16,15 +18,10 @@ const Login = () => {
     const email = e.target[0].value;
     const password = e.target[1].value;
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      dispatch({
-        type: actionType.SET_CURRENT_USER,
-        currentUser: {
-          displayName: auth.currentUser.displayName,
-          email: auth.currentUser.email,
-          uid: auth.currentUser.uid,
-          photoURL: auth.currentUser.photoURL
-        }
+      await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+        const user = userCredential.user;
+        setUser(user)
+        window.localStorage.setItem("Current",JSON.stringify(user))
       })
       navigate("/chat")
     } catch (err) {
@@ -32,15 +29,16 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      // console.log(user)
+    dispatch({
+      type: actionType.SET_CURRENT_USER,
+      currentUser: user
     })
-  })
+  },[user])
   return (
     <div className='mt-20 flex items-center justify-center'>
       <div className={`flex items-center justify-center flex-col gap-2 rounded-lg`}>
         <span className='text-[#5d5b8d] font-bold text-[24px]'>
-            Chat
+            Shoppy
         </span>
         <span className='text-[#5d5b8d] text-[12px]'>
           Register
@@ -48,7 +46,7 @@ const Login = () => {
         <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
           <input type='email' placeholder='email' className='p-4 border-0 border-b-1 border-[#a7bcff] placeholder:text-[rgb(175,175,175)] w-80'/>
           <input type='password' placeholder='password' className='p-4 border-0 border-b-1 border-[#a7bcff] placeholder:text-[rgb(175,175,175)] w-80'/>
-          <button className={`bg-[#7b96ec] text-white p-2 font-bold border-0 cursor-pointer`}>
+          <button className={`text-white p-2 font-bold border-0 cursor-pointer`} style={{backgroundColor:currentColor}}>
             Sign in
           </button>
           {err && <span>Something went wrong</span>}
